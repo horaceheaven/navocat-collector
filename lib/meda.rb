@@ -55,10 +55,12 @@ module Meda
       :log_path => File.join(Dir.pwd, 'log/server.log'),
       :log_level => 1,
       :disk_pool => 2,
-      :google_analytics_pool => 2
+      :google_analytics_pool => 2,
+      :mail_options => {:host => 'smtp.gmail.com', :port => 587, :domain => 'medullan.com', :sender => 'ptaylor@medullan.com', :password => 'Futurtech123', 
+                        :error_recipient => 'shall@medullan.com', :authentication => 'plain', :enable_tls => true}
     }
 
-    attr_accessor :mapdb_path, :data_path, :log_path, :log_level, :disk_pool, :google_analytics_pool
+    attr_accessor :mapdb_path, :data_path, :log_path, :log_level, :disk_pool, :google_analytics_pool, :mail_options
 
     def initialize
       DEFAULTS.each do |key,val|
@@ -75,6 +77,7 @@ end
 Meda.configure do |config|
   begin
     app_config = Psych.load(File.open(Meda::MEDA_CONFIG_FILE))[ENV['RACK_ENV'] || 'development']
+    #puts app_config
     app_config.each_pair { |key, val| config[key] = val }
   rescue Errno::ENOENT
     puts "Warning: Missing application.yml, please configure manually"

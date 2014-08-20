@@ -20,5 +20,6 @@ dataset.token = 'LOCAL_TEST'
 dataset.google_analytics = {'record' => false}
 Meda.datasets[dataset.token] = dataset
 
+use Meda::Services::ExceptionHandlerService
 run Meda::Collector::App
 

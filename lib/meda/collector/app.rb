@@ -15,9 +15,22 @@ module Meda
     class App < Sinatra::Base
 
       set :public_folder, 'static'
+      # Don't log them. We'll do that ourself
+      set :dump_errors, false
+ 
+      # Don't capture any errors. Throw them up the stack
+      set :raise_errors, true
+ 
+      # Disable internal middleware for presenting errors
+      # as useful HTML pages
+      set :show_exceptions, false
 
       helpers Sinatra::Cookies
       helpers Sinatra::JSON
+      
+      error do 
+        #used for displaying Sinatra errors
+      end
 
       # @method get_index
       # @overload get "/"
