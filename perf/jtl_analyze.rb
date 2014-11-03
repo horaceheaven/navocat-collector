@@ -40,6 +40,27 @@ module JtlAnalyze
         "50% response time = #{stats.value_from_percentile(50)} ms\n" +
         "90% response time = #{stats.value_from_percentile(90)} ms\n"
     end
+
+    def join_result(results, name)
+      stats = DescriptiveStatistics::Stats.new(@times)
+      trans_rate = (@times.length / (stats.sum * 0.001)).round(2)
+
+      if results[name].nil?
+        results[name] = { hits: [], successes: [], failures: [], mean: [], rate: [], p50: [], p90: [] }
+      end
+
+      result = results[name]
+
+      result[:hits].push(@hits)
+      result[:successes].push(@successes)
+      result[:failures].push(@failures)
+      result[:mean].push(stats.mean.to_i)
+      result[:rate].push(trans_rate)
+      result[:p50].push(stats.value_from_percentile(50))
+      result[:p90].push(stats.value_from_percentile(90))
+
+      result
+    end
   end
 
   class Analysis
