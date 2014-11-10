@@ -17,7 +17,7 @@ print "Area"
 ARGV.each do |c| 
   analysis = JtlAnalyze::Analysis.new("perf/results/perf_test_#{c}_results.jtl").analyze!
 
-  print ", #{c}"
+  print ", #{c} Users"
 
   analysis.subjects.each do |subject|
 	subject.join_result(paths, subject.path)

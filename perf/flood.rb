@@ -10,7 +10,11 @@ PROTOCOL = 'http'
 PORT = '80'
 TOKEN = '0fe73a76c3f6448eb018369e3c6049c2' # dev-staging
 #TOKEN = 'c6002a7018be11e48c210800200c9a66'
-LOOPS = 5  #this was orignally 100, should play with this number to see how the perf test responds
+
+HOST = 'aimprod.medullan.com/meda'
+TOKEN = 'c6002a7018be11e48c210800200c9a66'
+
+LOOPS = 1  #this was orignally 100, should play with this number to see how the perf test responds
 
 loads = ARGV.map {|c| c.to_i }
 loads.each do |c|
@@ -75,11 +79,11 @@ loads.each do |c|
       10.times do
         post :name => 'PAGE', :url => '/page.json', :raw_body => params.to_json.to_s, :use_keepalive => 'true'
         # Take a breath
-        test_action :duration => 500
+        #test_action :duration => 500
       end
 
       # Take a breath
-      #test_action :duration => 1000
+      test_action :duration => 1000
 
       # Record 10 events
 
@@ -100,7 +104,7 @@ loads.each do |c|
       10.times do
         post :name => 'EVENT', :url => '/track.json', :raw_body => params.to_json.to_s, :use_keepalive => 'true'
         # Take a breath
-        test_action :duration => 500
+        #test_action :duration => 500
       end
 
     end

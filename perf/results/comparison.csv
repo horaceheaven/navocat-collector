@@ -1,0 +1,36 @@
+Area, 10, 100, 200, 500, 600
+IDENTIFY - Total Hits, 268, 2295, 3385, 3484, 1189
+IDENTIFY - Successful responses, 268, 2295, 3385, 3484, 1189
+IDENTIFY - Error responses, 0, 0, 0, 0, 0
+IDENTIFY - Mean response time (ms), 292, 247, 234, 229, 295
+IDENTIFY - Transaction rate (trans/sec), 3.42, 4.04, 4.27, 4.37, 3.38
+IDENTIFY - 50% response time (ms), 176, 183, 202, 200, 267
+IDENTIFY - 90% response time (ms), 357, 322, 316, 286, 332
+PROFILE - Total Hits, 270, 2305, 3405, 3500, 1200
+PROFILE - Successful responses, 266, 2294, 3377, 3484, 1189
+PROFILE - Error responses, 4, 11, 28, 16, 11
+PROFILE - Mean response time (ms), 193, 202, 196, 172, 183
+PROFILE - Transaction rate (trans/sec), 5.17, 4.93, 5.1, 5.81, 5.46
+PROFILE - 50% response time (ms), 154, 159, 163, 163, 171
+PROFILE - 90% response time (ms), 236, 232, 234, 191, 217
+PAGE - Total Hits, 2700, 23023, 34026, 35000, 12000
+PAGE - Successful responses, 2700, 23023, 34026, 35000, 12000
+PAGE - Error responses, 0, 0, 0, 0, 0
+PAGE - Mean response time (ms), 174, 181, 171, 151, 154
+PAGE - Transaction rate (trans/sec), 5.74, 5.5, 5.84, 6.59, 6.47
+PAGE - 50% response time (ms), 144, 146, 146, 145, 146
+PAGE - 90% response time (ms), 216, 211, 207, 171, 192
+EVENT - Total Hits, 2700, 22907, 33704, 35000, 12000
+EVENT - Successful responses, 2700, 22907, 33704, 35000, 12000
+EVENT - Error responses, 0, 0, 0, 0, 0
+EVENT - Mean response time (ms), 177, 180, 171, 152, 153
+EVENT - Transaction rate (trans/sec), 5.64, 5.55, 5.83, 6.56, 6.5
+EVENT - 50% response time (ms), 145, 147, 147, 146, 146
+EVENT - 90% response time (ms), 218, 212, 208, 172, 193
+SUMMARY - Total Hits, 5938, 50530, 74520, 76984, 26389
+SUMMARY - Successful responses, 5934, 50519, 74492, 76968, 26378
+SUMMARY - Error responses, 4, 11, 28, 16, 11
+SUMMARY - Mean response time (ms), 181, 184, 175, 156, 161
+SUMMARY - Transaction rate (trans/sec), 5.5, 5.41, 5.7, 6.39, 6.18
+SUMMARY - 50% response time (ms), 146, 149, 148, 146, 147
+SUMMARY - 90% response time (ms), 221, 216, 212, 185, 203
