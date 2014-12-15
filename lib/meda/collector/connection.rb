@@ -57,6 +57,40 @@ module Meda
         end
       end
 
+      # updates an existing profile
+      def set_profile(profile_info)
+        profile_id=profile_info[:id]
+        if @tree.key?(profile_key(profile_id)) # if the key exists, do an update
+          existing_profile = @tree.decode(profile_key(profile_id))
+          @tree.encode(profile_key(profile_id), existing_profile.merge(profile_info))
+        else
+          # if the key doesn't exist, create a new profile
+          create_profile(profile_info)
+        end
+      end
+
+      # Returns a specific or all profiles
+      def get_profile(profile_id)
+        if profile_id.nil? || profile_id.empty? #if profile id is null or blank
+          get_all_profiles
+        else #if profile id has a value
+          get_profile_by_id(profile_id)
+        end
+      end
+
+      #returns a hash array with all profiles
+      def get_all_profiles()
+        hash_array=Array.new
+        #returns all profile keys
+        profileKeys=@tree.keys.select{|k| k.to_s.match("profile")}
+        profileKeys.each do |key|
+          #retrieves a hash of the values
+          hash=ActiveSupport::HashWithIndifferentAccess.new(@tree.decode(key))
+          hash_array.push(hash)
+        end
+        return hash_array
+      end
+
       def get_last_hit(params)  
         process_request(params) do |dataset, extra_params|
           if dataset.enable_data_retrivals

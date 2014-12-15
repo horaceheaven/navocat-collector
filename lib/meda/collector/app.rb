@@ -77,11 +77,43 @@ module Meda
         end
       end
 
+      put '/meda/profile_update', provides => :json do
+        profile_info = raw_json_from_request
+        print_out_params(profile_info)
+        if valid_request?(profile_info)
+          result = settings.connection.set_profile(profile_info)
+          Meda.printf(result)
+          if result
+            respond_with_ok
+          else
+            respond_with_bad_request
+          end
+        else
+          respond_with_bad_request
+        end
+      end
+
+      get '/meda/profiles', provides => :json do
+        profile_info = raw_json_from_request
+        print_out_params(profile_info)
+        if valid_request?(profile_info)
+          result = settings.connection.get_all_profiles(profile_info)
+          Meda.printf(result)
+          if result
+            respond_with_ok
+          else
+            respond_with_bad_request
+          end
+        else
+          respond_with_bad_request
+        end
+      end
+
       # @method delete_profile_json
       # Deletes a given profile by profileid and dataset
-      delete '/meda/profile.json', :provides => :json do
-
+      delete '/meda/profile.json', :provides => :json dos
         profile_data = raw_json_from_request
+        #printf(profile_data)
         if valid_request?(profile_data)
           result = settings.connection.delete_profile(profile_data)
           if result
@@ -359,7 +391,7 @@ module Meda
       end
 
       def logger
-        @logger ||= Meda.logger || Logger.new(STDOUT)
+        #@logger ||= Meda.logger || Logger.new(STDOUT)
       end
 
     end
